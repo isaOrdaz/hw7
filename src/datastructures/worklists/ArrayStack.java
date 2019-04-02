@@ -3,38 +3,67 @@ package datastructures.worklists;
 import egr221a.exceptions.NotYetImplementedException;
 import egr221a.interfaces.worklists.LIFOWorkList;
 
+import java.lang.reflect.Array;
+
 /**
  * See egr221a/interfaces/worklists/LIFOWorkList.java
  * for method specifications.
  */
 public class ArrayStack<E> extends LIFOWorkList<E> {
+    private E[] elements;
+    private final int DEFAULT_SIZE = 10;
+    private int size;
 
     public ArrayStack() {
-        throw new NotYetImplementedException();
+        elements = (E[]) new Object[DEFAULT_SIZE];
+        size = 0;
     }
 
     @Override
     public void add(E work) {
-        throw new NotYetImplementedException();
+        elements[size] = work;
+        size++;
+
+        if(size > elements.length * .7){
+            int tempSize = elements.length * 2;
+
+            E[] temp = (E[]) new Object[tempSize];
+            for(int i = 0; i < elements.length; i++){
+                temp[i] = elements[i];
+            }
+
+            elements = temp;
+        }
     }
 
     @Override
     public E peek() {
-        throw new NotYetImplementedException();
+        if(!hasWork()) {
+            throw new java.util.NoSuchElementException();
+        }
+
+        return elements[size - 1];
     }
 
     @Override
     public E next() {
-        throw new NotYetImplementedException();
+        if(!hasWork()) {
+            throw new java.util.NoSuchElementException();
+        }
+
+        E removed = elements[size - 1];
+        size--;
+
+        return removed;
     }
 
     @Override
     public int size() {
-        throw new NotYetImplementedException();
+        return size;
     }
 
     @Override
     public void clear() {
-        throw new NotYetImplementedException();
+        size = 0;
     }
 }
