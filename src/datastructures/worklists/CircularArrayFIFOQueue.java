@@ -8,39 +8,55 @@ import egr221a.interfaces.worklists.FixedSizeFIFOWorkList;
  * for method specifications.
  */
 public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
+    private E[] array;
+    private int index;
+
     public CircularArrayFIFOQueue(int capacity) {
         super(capacity);
-        throw new NotYetImplementedException();
+
+
+
     }
 
     @Override
     public void add(E work) {
-        throw new NotYetImplementedException();
-    }
+        if (capacity() >= 0) {
+            array[index] = work;
+            index++;
+            }
+        }
+
 
     @Override
     public E peek() {
-        throw new NotYetImplementedException();
+       return array[index];
     }
     
     @Override
     public E peek(int i) {
-        throw new NotYetImplementedException();
+        return array[index + i];
     }
     
     @Override
     public E next() {
-        throw new NotYetImplementedException();
+        E temp = array[index];
+        if (temp != null){
+            array[index] = null;
+            index++;
+        }
+       return temp;
     }
     
     @Override
     public void update(int i, E value) {
-        throw new NotYetImplementedException();
+       if (array != null)
+           array[i] = value;
+
     }
     
     @Override
     public int size() {
-        throw new NotYetImplementedException();
+
     }
     
     @Override
