@@ -51,20 +51,19 @@ public class ArrayStack<E> extends LIFOWorkList<E> {
             throw new java.util.NoSuchElementException();
         }
 
-        return null;
+        E removed = elements[size - 1];
+        size--;
+
+        return removed;
     }
 
     @Override
     public int size() {
-        return elements.length;
+        return size;
     }
 
     @Override
     public void clear() {
-        for(int i = 0; i < elements.length; i++){
-            elements[i] = null;
-        }
-
         size = 0;
     }
 }
