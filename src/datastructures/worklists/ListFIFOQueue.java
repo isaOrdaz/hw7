@@ -25,11 +25,11 @@ public class ListFIFOQueue<E> extends FIFOWorkList<E> {
     @Override
     public void add(E work) {
         if (size == 0){
-            front = new ListNode<>(work);
+            front = new ListNode<E>(work);
             end = front;
             size++;
         } else {
-            end.next = new ListNode<>(work);
+            end.next = new ListNode<E>(work);
             end = end.next;
             size++;
 
@@ -78,9 +78,8 @@ public class ListFIFOQueue<E> extends FIFOWorkList<E> {
 
 
 
-        public ListNode(){
 
-        }
+        public ListNode(){}
 
 
         public ListNode (E work){
