@@ -4,6 +4,7 @@ import egr221a.exceptions.NotYetImplementedException;
 import egr221a.interfaces.worklists.LIFOWorkList;
 
 import java.lang.reflect.Array;
+import java.util.NoSuchElementException;
 
 /**
  * See egr221a/interfaces/worklists/LIFOWorkList.java
@@ -67,7 +68,7 @@ public class ArrayStack<E> extends LIFOWorkList<E> {
     @Override
     public E peek() {
         if(!hasWork()) {
-            throw new java.util.NoSuchElementException();
+            throw new NoSuchElementException();
         }
 
         return elements[size - 1];
@@ -86,7 +87,7 @@ public class ArrayStack<E> extends LIFOWorkList<E> {
     @Override
     public E next() {
         if(!hasWork()) {
-            throw new java.util.NoSuchElementException();
+            throw new NoSuchElementException();
         }
 
         E removed = elements[size - 1];

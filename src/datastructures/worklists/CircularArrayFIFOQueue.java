@@ -13,9 +13,6 @@ public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
 
     public CircularArrayFIFOQueue(int capacity) {
         super(capacity);
-
-
-
     }
 
     @Override
