@@ -50,6 +50,19 @@ public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
         return circleQueue[(first + i) % circleQueue.length];
     }
 
+    /**
+     * This method removes and returns the
+     * first element
+     *
+     * Pre:
+     *  - Array must not be empty
+     * Post:
+     *  - Removes the first element in the queue
+     *      and returns it
+     *  - Updates first to be the next element in the
+     *      queue
+     * @return
+     */
     @Override
     public E next() {
         if(!hasWork()) {
@@ -64,6 +77,13 @@ public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
         return temp;
     }
 
+    /**
+     * This method reassigns the ith element to
+     * the value passed in
+     * @param i
+     *            the index of the element to update
+     * @param value
+     */
     @Override
     public void update(int i, E value) {
         if (size > 0)
@@ -71,11 +91,21 @@ public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
 
     }
 
+    /**
+     * This method returns the size of
+     * the queue
+     * @return
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * This method clears the array
+     * by reinitializing first, index,
+     * and size to zero
+     */
     @Override
     public void clear() {
         first = 0;
