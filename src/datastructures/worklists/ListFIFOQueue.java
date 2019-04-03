@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * See egr221a/interfaces/worklists/FIFOWorkList.java
- * for method specifications.
+ * Created by: Jacob Nona & Isabel Ordaz
+ * Collaborated with: Alex L., Grayson, Robbie, Chase, Alex P.
+ * Program that created a linked list under the hood by utilizing the head and the tail
+ * Uses worklist methods to operate the list and identify needed values
  */
 public class ListFIFOQueue<E> extends FIFOWorkList<E> {
     private ListNode<E> front;
