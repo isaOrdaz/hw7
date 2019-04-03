@@ -5,8 +5,10 @@ import egr221a.interfaces.worklists.FixedSizeFIFOWorkList;
 import java.util.NoSuchElementException;
 
 /**
- * See egr221a/interfaces/worklists/FixedSizeLIFOWorkList.java
- * for method specifications.
+ * Created by: Jacob Nona & Isabel Ordaz
+ * Collaborated with: Alex L., Grayson, Robbie, Chase, Alex P.
+ * Program for creating a circular array as a queue under the hood which extends from its parent's class
+ * Uses worklists methods provided to construct the functions for the data structure
  */
 public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
     private E[] circleQueue;
@@ -14,6 +16,7 @@ public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
     private int index;
     private int size;
 
+    //Constructs the parameter for capacity and the class variables
     public CircularArrayFIFOQueue(int capacity) {
         super(capacity);
         size = 0;
@@ -22,6 +25,15 @@ public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
         first = 0;
     }
 
+    /**
+     * method that adds the given generic value to the worklist
+     * Pre: size is compared to capacity to ensure no index exceptions
+     * Post: work value is set to the element at the index within the array
+     * index is moved using modular operations to ensure that the index stays within bounds
+     * size is incremented
+     * @param work
+     * the work to add to the worklist
+     */
     @Override
     public void add(E work) {
         if (size < capacity()) {
@@ -33,7 +45,11 @@ public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
         }
     }
 
-
+    /**
+     * method that returns the first element within the circular array (worklist)
+     * only can be applied when work is available
+     * @return
+     */
     @Override
     public E peek() {
         if(!hasWork()) {
@@ -42,6 +58,10 @@ public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
         return circleQueue[first];
     }
 
+    /**
+     * method that returns the ith element within the circular array (worklist)
+     * only can be applied when work is available
+     */
     @Override
     public E peek(int i) {
         if(!hasWork()) {
