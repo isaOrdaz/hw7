@@ -53,7 +53,7 @@ public class ListFIFOQueue<E> extends FIFOWorkList<E> {
         }
         E tempNext = front.data;
         front = front.next;
-        size++;
+        size--;
         return tempNext;
     }
 
@@ -78,9 +78,14 @@ public class ListFIFOQueue<E> extends FIFOWorkList<E> {
 
 
 
-        public ListNode(){}
+        public ListNode(){
 
-        public ListNode (E work){}
+        }
+
+
+        public ListNode (E work){
+            this.data = work;
+        }
     }
 
 }
