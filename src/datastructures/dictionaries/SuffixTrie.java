@@ -1,10 +1,14 @@
 package datastructures.dictionaries;
 
+import datastructures.worklists.CircularArrayFIFOQueue;
+import datastructures.worklists.ListFIFOQueue;
 import egr221a.exceptions.NotYetImplementedException;
 import egr221a.interfaces.worklists.FIFOWorkList;
 import egr221a.interfaces.worklists.FixedSizeFIFOWorkList;
 import egr221a.types.ByteString;
 import datastructures.dictionaries.HashTrieMap;
+
+import java.util.Map;
 
 public class SuffixTrie extends HashTrieMap<Byte, ByteString, Boolean> {
     protected static final Byte TERMINATOR = null;
@@ -13,6 +17,8 @@ public class SuffixTrie extends HashTrieMap<Byte, ByteString, Boolean> {
     private FixedSizeFIFOWorkList<Byte> currentMatch;
     private FIFOWorkList<HashTrieNode> leaves;
     private HashTrieNode lastMatchedNode;
+
+    private FixedSizeFIFOWorkList contents;
 
     /**
      * A new SuffixTrie is constructed with an internal buffer of size size and a
@@ -24,6 +30,17 @@ public class SuffixTrie extends HashTrieMap<Byte, ByteString, Boolean> {
      */
     public SuffixTrie(int size, int maxMatchLength) {
         super(ByteString.class);
+
+        currentMatch = new CircularArrayFIFOQueue<>(maxMatchLength);
+        lastMatchedNode = null;
+        contents = new CircularArrayFIFOQueue(size);
+        leaves = new ListFIFOQueue<>();
+
+        root = new HashTrieNode();
+        ((Map) root.pointers).put(null, true);
+        size = 1;
+
+        leaves.add((HashTrieNode) root);
 
         throw new NotYetImplementedException();
     }

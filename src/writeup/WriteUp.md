@@ -6,19 +6,28 @@
     What happened?<pre>
 **TODO**: Answer this question
 </pre><br>
-
+    I believe we both did the same amount of work. Jacob maybe did a little more 
+    because of the way we decided to split up the checkpoints and classes. Some 
+    that Jacob had ended up being more work/more difficult than mine. 
+    
 -----
-
 #### Project Enjoyment ####
 -   What was your favorite part of the project?  What was your least
     favorite part of the project?<pre>
 **TODO**: Answer this question
 </pre><br>
+    My favorite part of the porject was being able to use Git to collaborate
+    with my partner. In someways however it was also my least faovrite part
+    of the project because since I am still new to Git, merge confilicts 
+    are something that I am stil not familiar with. Not having that familiarity
+    with the merge confits it was sometimes 
 
 -   Did you enjoy the project?<pre>
 **TODO**: Answer this question
 </pre><br>
-
+    Desipte the stress of having a somewhat short timeline I think I did enjoy
+    this project. I enojyed being able use Git and share the project that way. 
+    
 -----
 
 #### WorkLists, Tries, and Zip ####
@@ -26,31 +35,20 @@
     which allows you to do exactly that.  Why is this an acceptable addition to the WorkList ADT in this particular case but not in general?<pre>
 **TODO**: Answer this question
 </pre><br>
+    When the size is fized we don't need to go through every element to get the size. That
+    way the time complexity is O(1) rather than O(n) saving time when it is a fixed size. 
+
 -   As we've described it, a `TrieMap` seems like a general-purpose replacement for `HashMap` or `TreeMap`.  Why might we still want to use one
     of these other data structures instead?<pre>
 **TODO**: Answer this question
 </pre><br>
+    We would want to use the other data structures when we want to use include int and dictionary
+    
 -   One of the applications of Tries is in solving Word Searches.  A "word search" is an n x m rectangle of letters.  The goal is to find all
     of the possible words (horizontal, vertical, diagonal, etc.).  In Boggle, a similar game, any consecutive chain of letters (even repetitions)
     are allowed.  Explain (in very high-level psuedo-code) how you might solve this problem with a TrieSet or a TrieMap.  Make sure to detail
     how a similar solution that uses a HashSet/HashMap instead would be different and why using a Trie might make the solution better.<pre>
 **TODO**: Answer this question
 </pre><br>
--   One of the classes in the egr221a.main package is called Zip.  This class uses your PriorityQueue to do Huffman coding, your FIFOQueue as a buffer,
-    your stack to calculate the keyset of a trie (using recursive backtracking), and your SuffixTrie to do LZ77Compression.  Find some text file
-    (a free book from https://www.gutenberg.org/ or even the HTML of some website) and use Zip.java to zip it into a zip file.  Then, use a 
-    standard zip utility on your machine (Finder on OS X, zip on Linux, WinZip or the like on Windows) to UNZIP your file.  Check that you got back
-    the original.  Congratulations!  Your program correctly implements the same compression algorithm you have been using for years!  Discuss in a
-    sentence or two how good the compression was and why you think it was good or bad.<pre>
-**TODO**: Answer this question
-</pre><br>
--   Now that you've played with Zip, we want you to do an **experiment** with Zip.  Notice that there is a constant called `BUFFER_LENGTH` in `Zip.java`.
-    Higher values of this constant makes the compression algorithm that Zip uses use more memory and consequently more time.  The "compression ratio"
-    of a file is the uncompressed size divided by the compressed size.  Compare time, space, type of input file, and compression ratio by running
-    your code on various inputs.  We would like an in-depth analysis.  You should try at least one "book-like" file, at least one "website-like" file,
-    and some other input of your choice.  We expect you to draw meaningful conclusions and possibly have graphs that convince us of your conclusions.
-    This single question is worth almost as much as the implementation of `ArrayStack`; so, please take it seriously.  If you spend less than 20 minutes
-    on this question, there is no conceivable way that you answered this question in the way we were intending.<pre>
-**TODO**: Answer this question
-</pre><br>
+
 
