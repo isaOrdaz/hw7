@@ -105,7 +105,11 @@ public class MinFourHeap<E extends Comparable<E>> extends PriorityWorkList<E> {
 
     /**
      * private method that percolates up through the heap using the "hole" parameter with a generic value and a parentIndex
-     * Pre: generic value and 4 children are initialized,
+     * Pre:
+     * - generic value and 4 children are initialized
+     * - conditions compare each child to size and the values
+     * - index is initialized
+     * Post:
      * @param hole
      */
     private void percolateDown(int hole) {
