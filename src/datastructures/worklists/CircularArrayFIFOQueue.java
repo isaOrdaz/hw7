@@ -2,6 +2,8 @@ package datastructures.worklists;
 
 import egr221a.exceptions.NotYetImplementedException;
 import egr221a.interfaces.worklists.FixedSizeFIFOWorkList;
+
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -152,13 +154,31 @@ public class CircularArrayFIFOQueue<E> extends FixedSizeFIFOWorkList<E> {
 
             // Your code goes here
 
-            throw new NotYetImplementedException();
+           if (this.size == other.size()){
+               Iterator<E> iter1 = this.iterator();
+               Iterator<E> iter2 = other.iterator();
+               while(iter1.hasNext() && iter2.hasNext()){
+                   if (!iter1.next().equals(iter2.next())){
+                       return false;
+                   }
+               }
+               return !iter1.hasNext() && !iter2.hasNext();
+           }
         }
+        return false;
     }
+
+
 
     @Override
     public int hashCode() {
         // You will implement this method in p2. Leave this method unchanged for p1.
-        throw new NotYetImplementedException();
+        int hash = 0;
+        for (E item: this){
+            hash /= this.size;
+            hash += 23 * item.hashCode();
+        }
+
+        return hash;
     }
 }
