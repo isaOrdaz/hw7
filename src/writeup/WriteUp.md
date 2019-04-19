@@ -50,5 +50,6 @@
     how a similar solution that uses a HashSet/HashMap instead would be different and why using a Trie might make the solution better.<pre>
 **TODO**: Answer this question
 </pre><br>
-
+    To solve this with a TrieMap you would move through each row and col in the puzzle, using
+    recursive backtracking to add all possible words to the Map then remove the last one. 
 
