@@ -10,39 +10,58 @@ import egr221a.interfaces.trie.BString;
 import egr221a.interfaces.trie.TrieMap;
 
 /**
- * See egr221a/interfaces/trie/TrieMap.java
- * and egr221a/interfaces/misc/Dictionary.java
- * for method specifications.
+ *
+ * Author: Jacob J. Nona
+ * Collaborated with: Alex P., Chase, Alex L., Robbie, Ryan B.
+ * Partner: Isabel Ordaz
+ * Java Class that uses an implementation of a trie where the "pointers" consist of a HashMap.
+ * Program accepts a string and creates a trie that creates nodes for each character
+ *
  */
 public class HashTrieMap<A extends Comparable<A>, K extends BString<A>, V> extends TrieMap<A, K, V> {
 
     public class HashTrieNode extends TrieNode<Map<A, HashTrieNode>, HashTrieNode> {
 
-
+        //Constructs a value for nodes
         public HashTrieNode() {
             this(null);
             this.pointers = new HashMap<A, HashTrieNode>();
             size = 0;
         }
 
+        //Constructs the root and refers to superclass method
         public HashTrieNode(V value) {
             this.pointers = new HashMap<A, HashTrieNode>();
             this.value = value;
         }
+
 
         @Override
         public Iterator<Entry<A, HashTrieNode>> iterator() {
             return pointers.entrySet().iterator();
         }
     }
-
+    //Constructs root node and calls superclass method
     public HashTrieMap(Class<K> KClass) {
         super(KClass);
         this.root = new HashTrieNode();
     }
 
+    /**
+     * method that returns a generic type and associates the given value with the given key
+     * Pre: Condition checks for if the given key contains characters
+     * - key and value are checked for null values
+     * Post: current is initialized and passes by every character within the given key through the trie
+     *
+     * @param key
+     *            key with which the specified value is to be associated
+     * @param value
+     *            value to be associated with the specified key
+     * @return
+     */
     @Override
     public V insert(K key, V value) {
+        //case 1: Parameters are null
         if (key == null || value == null) {
             throw new IllegalArgumentException("Null parameter was detected.");
         }
@@ -51,12 +70,13 @@ public class HashTrieMap<A extends Comparable<A>, K extends BString<A>, V> exten
         HashTrieNode current = (HashTrieNode) this.root;
 
         Iterator<A> iter = key.iterator();
+        //case 2: The node has children
         while (iter.hasNext()) {
 
             A character = iter.next();
 
             if (current.pointers.containsKey(character)) {
-                current = current.pointers.get(character);
+                current = current.pointers.get(character); //current traverses through the trie
             } else {
                 current.pointers.put(character, new HashTrieNode(null));
                 current = current.pointers.get(character);
@@ -75,6 +95,14 @@ public class HashTrieMap<A extends Comparable<A>, K extends BString<A>, V> exten
 
     }
 
+    /**
+     * method that returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+     * Pre: Condition checks for if given key is null
+     * Post: current is initialized and iteration is used to traverse through the trie
+     * @param key
+     * the key whose associated value is to be returned
+     * @return
+     */
     @Override
     public V find(K key) {
         if (key == null) {
@@ -94,6 +122,13 @@ public class HashTrieMap<A extends Comparable<A>, K extends BString<A>, V> exten
         return current.value;
     }
 
+    /**
+     * method that returns true if this map contains a mapping for which the key starts with the specified key prefix.
+     * Pre: Condition checks for if given key is null
+     * Post: Current is initialized and iteration is used to traverse through the trie
+     * @param key
+     * @return
+     */
     @Override
     public boolean findPrefix(K key) {
         if (key == null) {
@@ -112,6 +147,16 @@ public class HashTrieMap<A extends Comparable<A>, K extends BString<A>, V> exten
         return true;
     }
 
+    /**
+     * method that removes the mapping for the specified key from this map if present.
+     * Pre: Condition checks for if given key is null
+     * Post:
+     * - current, endNode, and the nonParentNode are initialized.
+     * - Utilized iteration to move through each character within key
+     * - cases for null values, greater than 1 sizes, and
+     * @param key
+     *            key whose mapping is to be removed from the map
+     */
     @Override
     public void delete(K key) {
         if (key == null) {
@@ -128,13 +173,13 @@ public class HashTrieMap<A extends Comparable<A>, K extends BString<A>, V> exten
                 if (nonParentNode == null){
                     nonParentNode = character;
                 }
-                //check to see if node is important: either has value or more than one character
+                //
                 if (current.value != null || current.pointers.size() > 1) {
                     endNode = current;
                     nonParentNode = character;
                 }
                 current = current.pointers.get(character);
-            } else { // path doesnt exist
+            } else { // data not within worklist
                 return;
             }
         }
@@ -149,7 +194,7 @@ public class HashTrieMap<A extends Comparable<A>, K extends BString<A>, V> exten
 
 
 
-
+    //clears class variables and sets them as their original states
     @Override
     public void clear() {
         root = null;

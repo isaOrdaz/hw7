@@ -143,12 +143,13 @@ public class MinFourHeap<E extends Comparable<E>> extends PriorityWorkList<E> {
         data[hole] = value;
     }
 
-
+    //method that returns an int known as the size
     @Override
     public int size() {
         return size;
     }
 
+    //method that clears the array and size of the worklist
     @Override
     public void clear() {
         data = null;
